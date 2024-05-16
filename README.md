@@ -43,7 +43,7 @@ go version
 ### Download and build binaries
 ```
 cd $HOME
-curl -s https://storage.googleapis.com/pryzm-zone/core/0.13.0/pryzmd-0.13.0-linux-amd64 > pryzmd
+curl -s https://storage.googleapis.com/pryzm-zone/core/0.15.0/pryzmd-0.15.0-linux-amd64 > pryzmd
 chmod +x pryzmd
 mkdir -p $HOME/go/bin
 mv pryzmd $HOME/go/bin
@@ -171,10 +171,19 @@ pryzmd tx staking create-validator \
 
 ### Update
 ```
-There have been no updates at the moment, as soon as they come out, we will immediately add them to this section.
+sudo systemctl stop pryzmd
+
+# Download new binary
+cd $HOME
+curl -s https://storage.googleapis.com/pryzm-zone/core/0.15.0/pryzmd-0.15.0-linux-amd64 > pryzmd
+chmod +x pryzmd
+sudo mv pryzmd $(which pryzmd)
+
+sudo systemctl start pryzmd
+sudo journalctl -u pryzmd -f --no-hostname -o cat
 
 Current network:indigo-1
-Current version:v0.13.0
+Current version:v0.15.0
 ```
 
 ### Useful commands
